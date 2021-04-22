@@ -1,0 +1,3 @@
+exports.anlikTarih=()=>{
+    return Date();
+}
