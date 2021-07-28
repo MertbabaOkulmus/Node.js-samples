@@ -24,3 +24,4 @@ MongoClient.connect(
             db.close();
         })
 })
+
