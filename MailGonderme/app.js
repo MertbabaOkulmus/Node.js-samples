@@ -13,7 +13,7 @@ var mailBilgi={
     to:"mertbaba.okulmus@hotmail.com,matamatik-kimya@hotmail.com",//bir den fazla kişiye mail göndermek için mailller arasına , koymak yeterlidir 
     subject:"NodeJs ile Mail",
     text:"NodeJs ile Mail gönderiyorum",
-    html:"<h1>HTML ile Mail</h1><strong>Mailde html bilgisi gönderiyorum.</strong>" //mail içeriğine html tağları da yazabiliyoruz
+    html:"<h1>HTML ile Mail</h1><strong>Mailde html bilgisi gönderiyorum.</strong>" //mail içeriğine html tağları da yazabiliyoruz, text özelliği gibi kullana biliyoruz
 };
 
 transfer.sendMail(mailBilgi,function (error) {
