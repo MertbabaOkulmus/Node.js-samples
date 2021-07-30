@@ -132,7 +132,7 @@ const select =({req,res,il_adi})=>{
   app.get("/api/namazvakti/:id",(req,res)=>{
       axios.get("https://www.turktakvim.com/XMLservis.php?tip=vakit&cityID=16741&tarih=2021-07-29&format=json")
           .then((response)=>{
-               console.log(response.data);
+               return res.status(200).json(response.data.cityinfo.vakit);
             })
           .catch((error)=>{
               console.log(error);
