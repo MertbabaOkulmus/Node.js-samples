@@ -1,0 +1,17 @@
+body {
+    background-color: #63ba8f;
+}
+main {
+    display: block;
+    text-align: center;
+    color: #f4f4f4;
+    font-family: 'ABeeZee','sans-serif';
+    justify-content: center;
+    margin-top: 200px;
+}
+h1 {
+    font-size: 75px;
+}
+h2{
+    font-size: 25px;
+}
