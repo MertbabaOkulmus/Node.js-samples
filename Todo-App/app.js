@@ -19,10 +19,10 @@ app.get("/",(req,res)=>{
         dbo.collection("collectionum").find({}).toArray((err,result)=>{
             if(err) throw err
             console.log(result);
+            res.render("index",{data:result});
             db.close();
         })
     })
-    res.render("index");
 })
 
 const ekleme = ({data}) => {
@@ -32,7 +32,7 @@ const ekleme = ({data}) => {
         (err,db)=>{
             if(err) throw err
             var dbo = db.db("veritabanim")
-            dbo.collection("collectionum").insertOne({todoApp:data},(err,res)=>{
+            dbo.collection("collectionum").insertOne({isim:data},(err,res)=>{
                 if (err) throw err;
                 console.log("veri kayıt işlemi başarılı");
                 console.log(data);
@@ -42,8 +42,7 @@ const ekleme = ({data}) => {
 }
 app.post("/",(req,res)=>{
     ekleme({data:req.body.gorev});
-    res.render("index");
-
+    res.redirect("http://localhost:3000");
 })
 
 app.listen(PORT,() => console.log(`Server ${PORT} portunda çalışıyor`))

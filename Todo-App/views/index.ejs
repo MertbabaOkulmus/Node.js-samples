@@ -17,6 +17,12 @@
         <input type="text" name="gorev">
         <input type="submit" value="Ekle">
     </form>
-    
+    <ul>
+        <% data.forEach((item)=>{%>
+            <li>
+                <%=item.isim%>
+            </li>
+         <% }) %>
+    </ul>
 </body>
 </html>
