@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3000
 const uri = "mongodb+srv://nodemongo:123@cluster0.jkyq6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const Gorev = require("./models/Gorev");
 
 app.set("view engine","ejs")
 app.use(bodyParser.urlencoded({extended:false}))
@@ -20,7 +21,6 @@ mongoose.connect(
 
 app.post("/",(req,res)=>{
     console.log("Post işlemi yapıldı!");
-    const Gorev = require("./models/Gorev");
     const yeniGorev =new Gorev({
         isim: req.body.gorev
     }) 
@@ -31,6 +31,15 @@ app.post("/",(req,res)=>{
 })
 
 app.get("/",(req,res)=>{
+    Gorev.find((err,docs)=>{
+        if (err) throw err
+        console.log(docs);
+        res.render("index",{data:docs})
+    })
+})
+
+//#region 
+/*app.get("/",(req,res)=>{
     MongoClient.connect(
         uri,
         { useNewUrlParser: true, useUnifiedTopology: true },
@@ -44,7 +53,7 @@ app.get("/",(req,res)=>{
             db.close();
         })
     })
-})
+})*/
 
 /*const ekleme = ({data}) => {
     MongoClient.connect(
@@ -65,5 +74,6 @@ app.get("/",(req,res)=>{
     ekleme({data:req.body.gorev});
     res.redirect("http://localhost:3000"); //post işleminden sonra tekrardan "http://localhost:3000" adresine manuel olarak istek (get isteği) gönderiyoruz ki sayfa güncellensin eklenen veriler gözüksün 
 })*/
+//#endregion
 
 app.listen(PORT,() => console.log(`Server ${PORT} portunda çalışıyor`))
